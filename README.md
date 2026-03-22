@@ -1,4 +1,4 @@
-# 🧩 Microservices Architecture – Auth + Todo Example
+# Microservices Architecture Example
 
 This project demonstrates a **frontend microservices architecture** using two independent applications:
 
@@ -9,7 +9,7 @@ Each service is **independently deployed, isolated, and communicates securely**.
 
 ---
 
-# 📌 Architecture Overview
+# Architecture Overview
 
 ```
 +-------------------+        postMessage        +-------------------+
@@ -24,7 +24,7 @@ Each service is **independently deployed, isolated, and communicates securely**.
 
 ---
 
-# 🧠 Key Microservices Concepts Demonstrated
+# Key Microservices Concepts Demonstrated
 
 ## 1. Service Independence
 
@@ -40,7 +40,7 @@ Each service is **independently deployed, isolated, and communicates securely**.
 
 Instead of direct imports or shared state, services communicate via:
 
-### 🔁 `window.postMessage`
+### `window.postMessage`
 
 From Auth → Todo:
 
@@ -66,13 +66,13 @@ event.source?.postMessage(
 
 ## 3. Secure Token Transfer (Important 🔐)
 
-### ❌ What we avoid:
+### What we avoid:
 
 * localStorage
 * cookies
 * URL params
 
-### ✅ What we use:
+### What we use:
 
 * **In-memory token passing via postMessage**
 
@@ -137,7 +137,7 @@ if (event.data?.type === "AUTH_TOKEN_ACK")
 
 ---
 
-# 🔐 Authentication Flow
+# Authentication Flow
 
 ### Step-by-step:
 
@@ -159,7 +159,7 @@ if (event.data?.type === "AUTH_TOKEN_ACK")
 
 ---
 
-# 📡 API Communication (Todo Service)
+# API Communication (Todo Service)
 
 All requests use **Bearer token authentication**:
 
@@ -185,7 +185,7 @@ Used for:
 
 ---
 
-# 🧩 Todo Service Features
+# Todo Service Features
 
 * Fetch todos
 * Add todo
@@ -204,7 +204,7 @@ await supabase.functions.invoke("manage-todos", {
 
 ---
 
-# ⚡ Performance Patterns Used
+# Performance Patterns Used
 
 ## 1. Optimistic UI Updates
 
@@ -238,7 +238,7 @@ const { data } = await supabase.auth.getSession();
 
 ---
 
-# 🚪 Logout Flow
+# Logout Flow
 
 ```ts
 await supabase.auth.signOut();
@@ -253,7 +253,7 @@ userIdRef.current = null;
 
 ---
 
-# ⚠️ Failure Handling
+# Failure Handling
 
 * Retry mechanism for token delivery
 * Optimistic UI rollback on API failure
@@ -267,7 +267,7 @@ if (!auth) {
 
 ---
 
-# 🧪 How to Run
+# How to Run
 
 ### 1. Start Auth Service
 
@@ -287,7 +287,7 @@ npm run dev
 
 ---
 
-# 🎯 Why This is a Microservices Architecture
+# Why This is a Microservices Architecture
 
 Even though this is frontend:
 
@@ -314,7 +314,7 @@ Even though this is frontend:
 
 ---
 
-# 🧠 Key Takeaways
+# Key Takeaways
 
 * Microservices ≠ only backend
 * Frontend can also be distributed
@@ -323,7 +323,7 @@ Even though this is frontend:
 
 ---
 
-# 💬 TL;DR
+# TL;DR
 
 * Auth service logs user in
 * Sends token securely via `postMessage`
