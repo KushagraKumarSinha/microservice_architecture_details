@@ -32,7 +32,7 @@ Each service is **independently deployed, isolated, and communicates securely**.
 * `Todo.tsx` handles **business logic (todos) only**
 * Both run on **different ports (3000 vs 3001)**
 
-👉 No tight coupling between services
+No tight coupling between services
 
 ---
 
@@ -60,11 +60,11 @@ event.source?.postMessage(
 );
 ```
 
-👉 This mimics **inter-service communication in distributed systems**
+This mimics **inter-service communication in distributed systems**
 
 ---
 
-## 3. Secure Token Transfer (Important 🔐)
+## 3. Secure Token Transfer (Important)
 
 ### What we avoid:
 
@@ -88,7 +88,7 @@ authTokenRef.current = token;
 userIdRef.current = userId;
 ```
 
-👉 Token is:
+Token is:
 
 * NOT persisted
 * NOT exposed to XSS via storage
@@ -110,7 +110,7 @@ if (event.origin !== "http://localhost:3000") return;
 if (event.origin === "http://localhost:3001")
 ```
 
-👉 Prevents malicious cross-origin attacks
+Prevents malicious cross-origin attacks
 
 ---
 
@@ -133,7 +133,7 @@ Stops when ACK is received:
 if (event.data?.type === "AUTH_TOKEN_ACK")
 ```
 
-👉 This simulates **reliable message delivery in distributed systems**
+This simulates **reliable message delivery in distributed systems**
 
 ---
 
@@ -173,7 +173,7 @@ supabase.functions.invoke("get-todos", {
 
 ---
 
-# ⚙️ Backend (Supabase)
+# Backend (Supabase)
 
 Used for:
 
@@ -214,7 +214,7 @@ setTodos((prev) =>
 );
 ```
 
-👉 UI updates instantly before server confirms
+UI updates instantly before server confirms
 
 ---
 
@@ -224,7 +224,7 @@ setTodos((prev) =>
 const authTokenRef = useRef<string | null>(null);
 ```
 
-👉 Avoids unnecessary re-fetching
+Avoids unnecessary re-fetching
 
 ---
 
@@ -234,7 +234,7 @@ const authTokenRef = useRef<string | null>(null);
 const { data } = await supabase.auth.getSession();
 ```
 
-👉 Handles refresh scenarios gracefully
+Handles refresh scenarios gracefully
 
 ---
 
@@ -246,7 +246,7 @@ authTokenRef.current = null;
 userIdRef.current = null;
 ```
 
-👉 Clears:
+Clears:
 
 * Supabase session
 * In-memory credentials
@@ -301,7 +301,7 @@ Even though this is frontend:
 
 ---
 
-# 🚀 Possible Improvements
+# Possible Improvements
 
 * Use API Gateway instead of direct communication
 * Replace `postMessage` with:
