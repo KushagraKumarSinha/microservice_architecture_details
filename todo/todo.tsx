@@ -183,12 +183,7 @@ export default function TodoPage() {
 
   return (
     <div className="min-h-svh bg-background text-foreground flex flex-col items-center p-6 antialiased">
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="w-full max-w-[520px] space-y-6 mt-12"
-      >
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 300, damping: 30 }} className="w-full max-w-[520px] space-y-6 mt-12">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -197,15 +192,10 @@ export default function TodoPage() {
             </div>
             <div>
               <h1 className="text-xl font-medium tracking-[-0.02em]">My Todos</h1>
-              <p className="text-xs text-muted-foreground">
-                {completedCount}/{todos.length} completed
-              </p>
+              <p className="text-xs text-muted-foreground">{completedCount}/{todos.length} completed</p>
             </div>
           </div>
-          <button
-            onClick={handleLogout}
-            className="h-9 px-3 rounded-lg border border-border text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-all flex items-center gap-2"
-          >
+          <button onClick={handleLogout} className="h-9 px-3 rounded-lg border border-border text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-all flex items-center gap-2">
             <LogOut className="w-3.5 h-3.5" />
             Sign out
           </button>
@@ -213,17 +203,8 @@ export default function TodoPage() {
 
         {/* Add todo */}
         <form onSubmit={addTodo} className="flex gap-2">
-          <input
-            value={newTitle}
-            onChange={(e) => setNewTitle(e.target.value)}
-            placeholder="What needs to be done?"
-            className="flex-1 h-11 px-4 rounded-lg border border-border bg-popover focus:ring-2 focus:ring-ring/10 focus:ring-offset-2 focus:border-foreground transition-all outline-none text-sm"
-          />
-          <button
-            type="submit"
-            disabled={adding || !newTitle.trim()}
-            className="h-11 w-11 bg-primary text-primary-foreground rounded-lg flex items-center justify-center hover:opacity-90 active:scale-95 transition-all disabled:opacity-50"
-          >
+          <input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="What needs to be done?" className="flex-1 h-11 px-4 rounded-lg border border-border bg-popover focus:ring-2 focus:ring-ring/10 focus:ring-offset-2 focus:border-foreground transition-all outline-none text-sm"/>
+          <button type="submit" disabled={adding || !newTitle.trim()} className="h-11 w-11 bg-primary text-primary-foreground rounded-lg flex items-center justify-center hover:opacity-90 active:scale-95 transition-all disabled:opacity-50">
             {adding ? (
               <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
